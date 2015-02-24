@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Post;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -13,14 +15,18 @@ class WelcomeController extends Controller {
 	|
 	*/
 
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function index()
+  /**
+   * Show the application welcome screen to the user.
+   *
+   * @param Post $post
+   *
+   * @return Response
+   */
+	public function index(Post $post)
 	{
-		return view('index');
+    $posts = $post->orderBy('created_at', 'desc')->paginate(3);
+
+		return view('index', compact('posts'));
 	}
 
 }
