@@ -11,10 +11,22 @@
 |
 */
 
+use App\Post;
+
 Route::get('/', [
   'as'   => 'home',
   'uses' => 'WelcomeController@index'
 ]);
+
+Route::get('{slug}', [
+  'as'   => 'post.show',
+  'uses' => 'WelcomeController@show'
+]);
+
+Route::bind('slug', function($slug)
+{
+  return Post::whereSlug($slug)->firstOrFail();
+});
 
 Route::controllers([
   'auth'     => 'Auth\AuthController',

@@ -25,4 +25,12 @@ class Post extends Model {
       $post->slug = Str::slug($post->title);
     });
   }
+
+  /**
+   * @return string
+   */
+  public function getTeaserAttribute()
+  {
+    return Str::words($this->content, 20);
+  }
 }

@@ -13,9 +13,13 @@
       @foreach($posts as $post)
         <div class="blog-post">
           <h2 class="blog-post-title">{{$post->title}}</h2>
-          <p class="blog-post-meta">{{$post->created_at->format('m/d/Y')}}</p>
+          <p class="blog-post-meta">
+            {{$post->created_at->format('m/d/Y')}}
+            -
+            <a href="{{ route('post.show', $post->slug) }}">Read More...</a>
+          </p>
 
-          {!! nl2br($post->content) !!}
+          {!! nl2br($post->teaser) !!}
 
         </div><!-- /.blog-post -->
       @endforeach

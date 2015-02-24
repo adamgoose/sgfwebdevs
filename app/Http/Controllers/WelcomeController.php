@@ -4,16 +4,16 @@ use App\Post;
 
 class WelcomeController extends Controller {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Welcome Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders the "marketing page" for the application and
-	| is configured to only allow guests. Like most of the other sample
-	| controllers, you are free to modify or remove it as you desire.
-	|
-	*/
+  /*
+  |--------------------------------------------------------------------------
+  | Welcome Controller
+  |--------------------------------------------------------------------------
+  |
+  | This controller renders the "marketing page" for the application and
+  | is configured to only allow guests. Like most of the other sample
+  | controllers, you are free to modify or remove it as you desire.
+  |
+  */
 
   /**
    * Show the application welcome screen to the user.
@@ -22,11 +22,20 @@ class WelcomeController extends Controller {
    *
    * @return Response
    */
-	public function index(Post $post)
-	{
+  public function index(Post $post)
+  {
     $posts = $post->orderBy('created_at', 'desc')->paginate(3);
 
-		return view('index', compact('posts'));
-	}
+    return view('index', compact('posts'));
+  }
 
+  /**
+   * @param Post $post
+   *
+   * @return \Illuminate\View\View
+   */
+  public function show(Post $post)
+  {
+    return view('post', compact('post'));
+  }
 }
