@@ -13,6 +13,15 @@
 
 use App\Post;
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function ()
+{
+
+  Route::get('/', [
+    'as'   => 'admin.index',
+    'uses' => 'DashboardController@getIndex',
+  ]);
+});
+
 Route::get('/', [
   'as'   => 'home',
   'uses' => 'WelcomeController@index'
@@ -23,7 +32,7 @@ Route::get('{slug}', [
   'uses' => 'WelcomeController@show'
 ]);
 
-Route::bind('slug', function($slug)
+Route::bind('slug', function ($slug)
 {
   return Post::whereSlug($slug)->firstOrFail();
 });
