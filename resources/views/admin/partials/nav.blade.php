@@ -1,7 +1,7 @@
 <ul class="sidebar-menu" id="nav-accordion">
 
-  <p class="centered"><img src="/dashboard/img/ui-sam.jpg" class="img-circle" width="60"></p>
-  <h5 class="centered">Marcel Newman</h5>
+  <p class="centered"><img src="{{Auth::user()->gravatar}}" class="img-circle" width="60"></p>
+  <h5 class="centered">{{Auth::user()->name}}</h5>
 
   <li class="mt">
     <a class="{{Request::is('admin') ? 'active' : ''}}" href="{{route('admin.index')}}">

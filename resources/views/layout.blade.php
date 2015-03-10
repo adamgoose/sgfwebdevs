@@ -23,6 +23,7 @@
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item {{Request::is('/') ? 'active' : ''}}" href="{{route('home')}}">Home</a>
+          <a class="blog-nav-item pull-right {{Request::is('auth/login') ? 'active' : ''}}" href="/auth/login">Login</a>
         </nav>
       </div>
     </div>

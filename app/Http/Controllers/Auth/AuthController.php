@@ -35,4 +35,9 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+  /**
+   * @var string
+   */
+  protected $redirectTo = '/admin';
+
 }
