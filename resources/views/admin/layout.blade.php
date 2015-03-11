@@ -68,6 +68,8 @@
           <div class="row">
             <div class="col-lg-12 main-chart">
 
+              @include('admin.partials.flash')
+
               @yield('content')
 
             </div><!-- /col-lg-9 END SECTION MIDDLE -->

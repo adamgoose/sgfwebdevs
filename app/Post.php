@@ -1,9 +1,12 @@
 <?php namespace App;
 
+use App\Traits\Linkable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Post extends Model {
+
+  use Linkable;
 
   /**
    * @var array
