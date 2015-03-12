@@ -2,11 +2,12 @@
 
 use App\Traits\Linkable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Post extends Model {
 
-  use Linkable;
+  use Linkable, SoftDeletes;
 
   /**
    * @var array
@@ -14,6 +15,10 @@ class Post extends Model {
   protected $fillable = [
     'title',
     'content',
+  ];
+
+  protected $dates = [
+    'deleted_at',
   ];
 
   /**

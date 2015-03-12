@@ -20,6 +20,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     'as'   => 'admin.index',
     'uses' => 'DashboardController@getIndex',
   ]);
+
+  Route::resource('posts', 'PostsController', [
+    'except' => ['create', 'store']
+  ]);
 });
 
 Route::get('/', [
@@ -32,6 +36,8 @@ Route::get('{slug}', [
   'uses' => 'WelcomeController@show'
 ]);
 
+
+Route::model('posts', 'App\Post');
 Route::bind('slug', function ($slug)
 {
   return Post::whereSlug($slug)->firstOrFail();
